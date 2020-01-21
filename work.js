@@ -31,16 +31,6 @@ spacer('findEmployeeByName Moe')
 console.log(findEmployeeByName('moe', employees));//{ id: 1, name: 'moe' }
 spacer('')
 
-// function findManagerFor(empObj, empArr) {
-//   return empArr.reduce((accum, emp) => {
-//     if (emp === empObj) {
-//       let retVal = emp.managerId;
-//       accum = empArr
-//     }
-//     return accum;
-//   }, {})
-// }
-
 function findManagerFor(empObj, empArr) {
   const mgmtID = empArr.reduce((accum, emp) => {
     if (emp === empObj) {
@@ -107,29 +97,6 @@ console.log(findManagementChainForEmployee(findEmployeeByName('shep Jr.', employ
   { id: 4, name: 'shep', managerId: 2 }]
 */
 spacer('');
-
-// function generateManagementTree(employees) {
-//   const root = employees.find(employee => !employee.managerId);
-  
-//   for (let i=0; i<employees.length; i++) {
-//     let currentReport = employees[i];
-
-//     let lowerLevel = employees.reduce((accum, employee) => {
-//       if (findManagerFor(employee, employees) === currentReport) {
-//         accum.push(employee);
-//       }
-//       return accum;
-//     }, []);
-    
-//     if (lowerLevel.length === 0) {
-//       currentReport.reports = [];
-//     } else {
-//       currentReport.reports = lowerLevel;
-//     }
-//   }
-  
-//   return root;
-// }
 
 function generateManagementTree(employees) {
   const root = employees.find(employee => !employee.managerId);
@@ -252,48 +219,6 @@ function displayManagementTree(mgmt) {
 
   return retStr;
 }
-
-// function displayManagementTree(mgmt) {
-//   let retStr = mgmt.name;
-
-//   for (let i=0; i<mgmt.reports.length; i++) {
-//     let currentEmployee = mgmt.reports[i];
-    
-//     let nextLevel = currentEmployee.reports;
-
-//     retStr += '\n'
-
-//     if (nextLevel.length === 0) {
-//       retStr += currentEmployee.name;
-//     } else {
-//       retStr += displayManagementTree(currentEmployee);
-//     }
-//   }
-
-//   return retStr;
-// }
-
-// function displayManagementTree(mgmt) {
-//   let retStr = mgmt.name;
-
-//   let dashes = '-';
-
-//   for (let i=0; i<mgmt.reports.length; i++) {
-    
-//     let currentEmployee = mgmt.reports[i];
-
-//     let lowerLevel = currentEmployee.reports;
-
-//     if (lowerLevel.length === 0) {
-//       retStr += '\n' + dashes + currentEmployee.name;
-//     } else {
-//       dashes += '-';
-//       retStr += '\n-' + dashes + displayManagementTree(currentEmployee);
-//     }
-//   }
-
-//   return retStr;
-// }
 
 spacer('displayManagementTree')
 //given a tree of employees, generate a display which displays the hierarchy
